@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Frequency Generator & RC High-Pass Filter</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; }
+    h1 { color: #2c3e50; }
+    a { text-decoration: none; color: #2980b9; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px; }
+    pre { background: #eee; padding: 10px; border-radius: 5px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Frequency Generator & RC High-Pass Filter</h1>
+
+  <p>This project demonstrates <strong>digital square wave generation</strong> with an Arduino and its interaction with a <strong>simple RC high-pass filter</strong>. The frequency is controlled via a potentiometer.</p>
+
+  <h2>Setup</h2>
+  <ul>
+    <li>Potentiometer on analog pin <code>A2</code></li>
+    <li>Digital output pin <code>GEN_SIG</code></li>
+    <li>RC high-pass filter: example <code>R = 100 Ω</code>, <code>C = 1 µF</code></li>
+    <li>Observe signals with an oscilloscope or Tinkercad virtual oscilloscope</li>
+  </ul>
+
+  <h2>Results</h2>
+  <h3>Low-Frequency Square Wave</h3>
+  <img src="scope_low_freq.png" alt="Low Frequency Square Wave">
+
+  <h3>High-Frequency Square Wave</h3>
+  <img src="scope_high_freq.png" alt="High Frequency Square Wave">
+
+  <h2>Frequency Calculation</h2>
+  <pre><code>// pot_signal = half-period of square wave in microseconds
+frequency = 1000000.0 / (2 * pot_signal); // in Hz
+  </code></pre>
+
+  <h2>Technical Notes</h2>
+  <ul>
+    <li>Arduino ADC is too slow to capture fast square wave transitions.</li>
+    <li>Energy calculation via <code>analogRead</code> averages out high-frequency signals.</li>
+    <li>Square waves are limited to 0–5V; negative peaks in filter output come from capacitor discharge.</li>
+  </ul>
+
+  <h2>Tinkercad Simulation</h2>
+  <p>Open the circuit in Tinkercad: <a href="https://www.tinkercad.com/things/dUEnp78An0c-highpassfilter/" target="_blank">High_Pass_Filter</a></p>
+
+  <h2>Didactic Purpose</h2>
+  <p>Shows embedded programming, analog/digital interactions, and basic signal processing. Ideal for educational or portfolio demonstration purposes.</p>
+
+  <p><a href="../index.html">Back to Projects</a></p>
+</body>
+</html>
+

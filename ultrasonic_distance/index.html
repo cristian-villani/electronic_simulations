@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ultrasonic Distance Measurement – Arduino Simulation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 1.5em;
+      line-height: 1.6;
+      background-color: #fafafa;
+      color: #222;
+    }
+    h1, h2 {
+      color: #003366;
+    }
+    code {
+      background-color: #eee;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+    }
+    img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      margin: 1em 0;
+    }
+    .box {
+      background-color: #fff;
+      border-left: 4px solid #003366;
+      padding: 1em;
+      margin: 1.5em 0;
+    }
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Ultrasonic Distance Measurement with Arduino</h1>
+
+<p>
+This project demonstrates how an Arduino can measure distance using an
+<strong>ultrasonic sensor</strong> (e.g. HC-SR04) by timing the echo of a sound pulse.
+The experiment focuses on <strong>digital timing</strong>, <strong>signal interpretation</strong>,
+and <strong>simple embedded control logic</strong>.
+</p>
+
+<div class="box">
+<strong>Learning goals:</strong>
+<ul>
+  <li>Generate and measure microsecond-scale digital pulses</li>
+  <li>Convert timing information into physical distance</li>
+  <li>React to sensor input using embedded logic</li>
+</ul>
+</div>
+
+<h2>Measurement Principle</h2>
+
+<p>
+The Arduino sends a short trigger pulse to the ultrasonic sensor.
+The sensor emits an ultrasonic burst and raises the echo pin HIGH for the
+duration of the round-trip travel time.
+</p>
+
+<p>
+The pulse width is measured using <code>pulseIn()</code> and converted into distance:
+</p>
+
+<pre>
+distance (cm) ≈ duration (µs) / 58
+</pre>
+
+<h2>Behavior</h2>
+
+<ul>
+  <li>Measured distance is printed to the Serial Monitor</li>
+  <li>An LED turns ON when the distance is below a fixed threshold (e.g. 70 cm)</li>
+  <li>Distance changes can be observed live in the simulation</li>
+</ul>
+
+<h2>Simulation</h2>
+
+<p>
+This experiment was developed and tested using <strong>Tinkercad Circuits</strong>,
+which allows full simulation without physical hardware.
+</p>
+
+<p>
+🔗 <a href="https://www.tinkercad.com/things/gQj8CsAMDUa-ultrasound-sensor-led" target="_blank">
+Open the Tinkercad Ultrasonic Distance Simulation
+</a>
+</p>
+
+<h2>Technical Notes</h2>
+
+<ul>
+  <li><code>pulseIn()</code> provides microsecond-resolution timing</li>
+  <li>No ADC is required; all signals are digital</li>
+  <li>Floating-point values are printed using <code>Serial.print()</code> due to AVR limitations</li>
+  <li>Simulation approximates real-world ultrasonic behavior</li>
+</ul>
+
+<h2>Limitations</h2>
+
+<ul>
+  <li>Speed of sound assumed constant (no temperature compensation)</li>
+  <li>Measurement precision limited by timing resolution</li>
+  <li>Not suitable for very fast or very long distances</li>
+</ul>
+
+<h2>Didactic Intent</h2>
+
+<p>
+This project is intentionally simple and transparent.
+It demonstrates a complete
+<strong>sense → compute → act</strong> loop and highlights common constraints
+encountered in embedded systems programming.
+</p>
+
+<footer>
+<p>
+Part of the <strong>Electronic Simulations – Arduino Learning Projects</strong> repository.
+</p>
+</footer>
+
+</body>
+</html>
+
