@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LC Circuit Resonance – Arduino Simulation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 1.5em;
+      line-height: 1.6;
+      background-color: #fafafa;
+      color: #222;
+    }
+    h1, h2 {
+      color: #003366;
+    }
+    code {
+      background-color: #eee;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+    }
+    img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      margin: 1em 0;
+    }
+    .box {
+      background-color: #fff;
+      border-left: 4px solid #003366;
+      padding: 1em;
+      margin: 1.5em 0;
+    }
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<h1>LC Circuit Resonance with Arduino</h1>
+
+<p>
+This project demonstrates how an Arduino can excite a simple <strong>LC circuit</strong>
+and reveal its <strong>resonance behavior</strong> using timed charge pulses.
+The experiment focuses on <strong>analog signal dynamics</strong>, <strong>digital control</strong>,
+and the interaction between software timing and circuit physics.
+</p>
+
+<div class="box">
+<strong>Learning goals:</strong>
+<ul>
+  <li>Observe charge and discharge processes in an LC circuit</li>
+  <li>Understand resonance and how excitation timing affects amplitude</li>
+  <li>Use Arduino to generate timed pulses for stimulating analog circuits</li>
+  <li>Analyze transient analog signals with Tinkercad simulation</li>
+</ul>
+</div>
+
+<h2>Experimental Setup</h2>
+
+<ul>
+  <li><strong>Arduino digital pin</strong>: generates short HIGH pulses to charge the LC circuit</li>
+  <li><strong>Inductor (L)</strong> and <strong>Capacitor (C)</strong>: form the LC tank</li>
+  <li><strong>NPN transistor</strong>: switches current into the LC tank</li>
+  <li><strong>Oscilloscope probe</strong>: connected across L and C to observe voltage oscillations</li>
+</ul>
+
+<h2>Measurement Principle</h2>
+
+<p>
+The Arduino sends short charge pulses to the LC circuit with a defined time delay.
+When the pulse period is close to <strong>half of the natural LC period</strong>, the circuit resonates,
+producing large sinusoidal voltage oscillations:
+</p>
+<pre>
+T₀ = 2 π √(L C)    (full oscillation period)
+f₀ = 1 / T₀        (resonance frequency)
+Optimal delay ≈ T₀ / 2
+</pre>
+
+<p>
+By varying the pulse delay, the oscillation amplitude can be maximized (resonance) or reduced.
+</p>
+
+<h2>Observed Behavior</h2>
+
+<ul>
+  <li>Voltage across the LC tank oscillates sinusoidally after each pulse</li>
+  <li>Maximum amplitude occurs when excitation delay matches resonance condition</li>
+  <li>Amplitude decays over time due to circuit damping</li>
+  <li>Too short or too long delays result in smaller oscillations</li>
+</ul>
+
+<h2>Simulation</h2>
+
+<p>
+The project can be fully simulated using <strong>Tinkercad Circuits</strong>.
+Adjust L, C, or pulse delay and observe the resonance effect live on the oscilloscope.
+</p>
+
+<p>
+🔗 <a href="https://www.tinkercad.com/things/hoRI0pb9cX4-lcchargedischargecircuit" target="_blank">
+Open the LC Resonance Simulation in Tinkercad
+</a>
+</p>
+
+<h2>Technical Notes</h2>
+
+<ul>
+  <li>Arduino timing is controlled in microseconds using <code>delayMicroseconds()</code></li>
+  <li>Oscilloscope probe measures analog voltage across L and C</li>
+  <li>Transient signal can be sampled via analog input, but fast oscillations may exceed Arduino ADC resolution</li>
+  <li>Simulation approximates ideal LC behavior with damping</li>
+</ul>
+
+<h2>Limitations</h2>
+
+<ul>
+  <li>Arduino ADC is too slow to fully capture high-frequency LC oscillations</li>
+  <li>Oscillation amplitude depends on pulse timing and component tolerances</li>
+  <li>Simulation is idealized; real circuits have parasitic resistance and inductance</li>
+</ul>
+
+<h2>Didactic Intent</h2>
+
+<p>
+This experiment illustrates:
+</p>
+<ul>
+  <li>Interaction between digital pulse generation and analog circuit response</li>
+  <li>Concept of resonance and energy transfer in LC circuits</li>
+  <li>Challenges of measuring fast analog signals with microcontrollers</li>
+  <li>Observation of physics principles via simulation before real hardware implementation</li>
+</ul>
+
+<footer>
+<p>
+Part of the <strong>Electronic Simulations – Arduino Learning Projects</strong> repository.
+</p>
+</footer>
+
+</body>
+</html>

@@ -39,8 +39,24 @@ Each project includes explanations, screenshots, and comments aimed at making th
 - Highlights limitations of Arduino ADC when attempting to measure fast analog transients.
 
 ---
+### Experiment B: LC Oscillator & Resonance
 
-### Experiment B: Ultrasonic Sensor Distance Measurement  
+📁 lc_oscillator/
+
+- Demonstrates an LC (inductor-capacitor) tank circuit driven by an Arduino-controlled switch.
+- Visualizes charge/discharge oscillations using a Tinkercad oscilloscope.
+- Two modes included: Simulation Mode – shows clean oscillations for visualization,  Tuning Mode – sweeps excitation pulse timing to find resonance and prints peak voltages.
+- Arduino reads analog voltage across the LC tank without disturbing waveform visualization.
+- Allows experimenting with different component values (L, C) to explore resonance frequency.
+- Demonstrates:
+  - LC tank oscillations and resonance behavior
+  - Interaction between digital control signals and analog circuits
+- Using Arduino for measurement and analysis while preserving simulation visualization
+
+Highlights practical considerations such as timing, ADC limitations, and pulse width effects on resonance.
+
+---
+### Experiment C: Ultrasonic Sensor Distance Measurement  
 📁 `ultrasonic_distance/`
 
 - Measures distance using an ultrasonic sensor (e.g. HC-SR04).
@@ -69,6 +85,11 @@ electronic_simulations/
 │ ├── highpass.ino
 │ ├── scope_low_freq.png
 │ └── scope_high_freq.png
+│
+├── lc_oscillator/ #  LC Oscillator & Resonance
+│ ├── README.md
+│ ├── lc_tank.ino
+│ └── circuit.png
 │
 └── ultrasonic_distance/ # Ultrasonic distance measurement experiment
 ├── README.md
