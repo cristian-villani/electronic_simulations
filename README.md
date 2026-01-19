@@ -41,7 +41,7 @@ Each project includes explanations, screenshots, and comments aimed at making th
 ---
 ### Experiment B: LC Oscillator & Resonance
 
-📁 lc_oscillator/
+📁 `lc_oscillator/`
 
 - Demonstrates an LC (inductor-capacitor) tank circuit driven by an Arduino-controlled switch.
 - Visualizes charge/discharge oscillations using a Tinkercad oscilloscope.
