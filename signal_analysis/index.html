@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PWM Signal Analysis & Frequency Estimation</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; }
+    h1 { color: #2c3e50; }
+    a { text-decoration: none; color: #2980b9; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px; }
+    pre { background: #eee; padding: 10px; border-radius: 5px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>PWM Signal Analysis & Frequency Estimation</h1>
+
+  <p>This project demonstrates <strong>PWM signal sampling and frequency estimation</strong> with an Arduino Uno. The program reads PWM signals from a digital pin, samples them at regular intervals, and estimates the signal's frequency by analyzing the rising edges of the waveform.</p>
+
+  <h2>Setup</h2>
+  <ul>
+    <li>PWM signal input on <code>PIN 3</code></li>
+    <li>Optional: Interrupt-based frequency measurement on <code>PIN 2</code></li>
+    <li>Arduino reads the digital state and timestamps it using <code>micros()</code></li>
+    <li>Results are printed in the Serial Monitor</li>
+  </ul>
+
+  <h2>Results</h2>
+  <h3>Raw Sample Collection</h3>
+  <p>The Arduino collects a fixed number of digital samples with timestamps to analyze the PWM signal.</p>
+  <img src="pwm_analysis_setup.png" alt="PWM Signal Analysis Setup">
+
+  <h3>Frequency Estimation</h3>
+  <p>After sampling, the Arduino estimates the frequency by calculating the time difference between the rising edges.</p>
+  <pre><code>// period = time difference between rising edges
+frequency = 1000000.0 / period; // in Hz
+  </code></pre>
+
+  <h2>Technical Notes</h2>
+  <ul>
+    <li>Sampling with <code>digitalRead</code> and <code>micros()</code> introduces timing jitter.</li>
+    <li>Effective frequency measurement is limited by Arduino timing capabilities.</li>
+    <li>The code uses basic array sampling and post-processing, but can be improved with interrupt-based measurement.</li>
+  </ul>
+
+  <h2>Tinkercad Simulation</h2>
+https://www.tinkercad.com/things/2K7PWbQ63Uu-signalanalysis/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard
+  <p>Open the circuit in Tinkercad: <a href="https://www.tinkercad.com/things/2K7PWbQ63Uu-signalanalysis" target="_blank">Signal Analysis</a></p>
+
+  <h2>Didactic Purpose</h2>
+  <p>This project demonstrates <strong>digital signal sampling, frequency estimation, and timing limitations</strong> in microcontroller-based systems. It is ideal for educational purposes or as a demonstration of embedded programming and signal analysis techniques.</p>
+
+  <p><a href="../index.html">Back to Projects</a></p>
+</body>
+</html>
+
